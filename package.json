@@ -10,8 +10,11 @@
     "mongoose": "^8.0.0",
     "validator": "^13.11.0"
   },
-     "scripts": {
+  "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
+  },
+  "engines": {
+    "node": ">=14 <20.9.0"
   }
 }
