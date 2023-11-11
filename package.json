@@ -9,5 +9,9 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.0",
     "validator": "^13.11.0"
+  },
+     "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   }
 }
