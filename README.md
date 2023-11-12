@@ -1,23 +1,30 @@
 # Admin panel
 
+## Overview
+
 This project is basically a simple authentication system API using node js, Express js, and Mongodb incorporating Json Web Token for user authentication. The system will have two types of users -
 
-1. Admin
-2. Normal user
+1. Admin 
+1. Normal user
 
 Admin can register themselves, while normal users cannot register directly. Instead, they can only be added by an authenticated admin.
 
-* To test this application you need postman
+> [!NOTE]
+>
+> To test this application you need postman
 
 ## Tech tools & NPM Packages
 
-1. Node js
-2. Express js
-3. Mongodb
-4. Json Web Token
-5. Bcrypt
+| Ser. no | Tools          |
+| ------: | -------------- |
+|       1 | Node js        |
+|       2 | Express js     |
+|       3 | Mongodb        |
+|       4 | Json Web Token |
+|       4 | Bcrypt         |
+|       4 | validator         |
 
-## Procedure
+# Procedure
 
 ## Admin Registration
 
@@ -25,14 +32,22 @@ Admin can register themselves, while normal users cannot register directly. Inst
 URL:
 
 ```bash
-      http://localhost:6001/api/admin/register
+      https://admin-panel-bi8j.onrender.com/api/admin/register
 ```
 
-Method : POST
+Method : ``POST``
+ 
+> [!IMPORTANT]
+>
+>  1. Username (string)
+>  1. Email (string)
+>  1. Password (string)
+>    
 
-1. Username (string)
-2. Email (string)
-3. Password (string)
+> [!NOTE]
+>
+>  1. Username and Email should be unique else throw error.
+>  1. Enter proper email as it's validated else throw error.
 
 ### Example
 
@@ -44,19 +59,37 @@ Method : POST
   }
 ```
 
+### Success Response
+
+```bash
+    {
+        "message": "admin registration successful",
+        "success": true
+    }
+```
+
 ## Admin Login
 
 <h4> Endpoints </h4>
 URL:
 
 ```bash
-    http://localhost:6001/api/admin/login
+    https://admin-panel-bi8j.onrender.com/api/admin/login
 ```
 
-Method : POST
+Method : ``POST``
+ 
+> [!IMPORTANT]
+>
+>  1. Username (string)
+>  1. Password (string)
 
-1. Username (string)
-2. Password (string)
+
+> [!NOTE]
+>
+>  1.  Username should be unique.
+>  1.  After successful login you will receive a token as a response and this token will be needed while adding the normal users because using this token server will check if the admin is valid or not
+>
 
 ### Example
 
@@ -67,7 +100,7 @@ Method : POST
   }
 ```
 
-### Response 
+### Success Response
 
 ```bash
     {
@@ -77,7 +110,8 @@ Method : POST
     }
 ```
 
-**After successful login you will receive a token as a response and this token will be needed while adding the normal users because using this token server will check if the admin is valid or not.**
+
+
 
 ## Add normal user
 
@@ -85,15 +119,42 @@ Method : POST
 URL:
 
 ```bash
-    http://localhost:6001/api/admin/add-user
+    https://admin-panel-bi8j.onrender.com/api/admin/add-user
 ```
 
-Method : POST
+Method : ``POST``
 
-1. Username (string)
-2. Email (string)
-3. Password (string)
-4. Authorization: Bearer [token] (which is generated at the time of admin's login)
+> [!IMPORTANT]
+>
+>  1. Username (string)
+>  1. Email (string)
+>  1. Password (string)
+>  1. Authorization: Bearer [token] (which is generated at the time of admin's login)
+
+> [!NOTE]
+>
+>  1. Username and Email should be unique else throw error.
+>  1. Enter proper email as it's validated else throw error.
+>  1. Also make sure that a admin can't register himself/herself as a normal user.
+
+### Example
+
+```bash
+   {
+    "email":"user@gmail.com",
+    "Username":"user112",
+    "Password":"User@123"
+  }
+```
+
+### Success Response
+
+```bash
+    {
+        "message": "user added successfully",
+        "success": true
+    }
+```
 
 ## Display all users
 
@@ -101,9 +162,17 @@ Method : POST
 URL:
 
 ```bash
-    http://localhost:6001/api/admin/all-users
+    https://admin-panel-bi8j.onrender.com/api/admin/all-users
 ```
 
-Method : GET
+Method : ``GET``
 
-1. Authorization: Bearer [token] (which is generated at the time of admin's login)
+> [!IMPORTANT]
+>  1. Authorization: Bearer [token] (which is generated at the time of admin's login)
+
+```bash
+    {
+    "allUsers": [],
+    "success": true
+    }
+```
