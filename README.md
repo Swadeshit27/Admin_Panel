@@ -25,6 +25,7 @@ Admin can register themselves, while normal users cannot register directly. Inst
 |       5 | Bcrypt         |
 |       6 | validator         |
 
+
 # Procedure
 
 ## Admin Registration
@@ -67,7 +68,6 @@ Method : ``POST``
         "success": true
     }
 ```
-
 ### Error Responses
 
 ```bash
