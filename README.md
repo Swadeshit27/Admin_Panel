@@ -177,7 +177,7 @@ Method : ``POST``
 
 ```bash
    {
-    "email":"user@gmail.com",
+    "Email":"user@gmail.com",
     "Username":"user112",
     "Password":"User@123"
   }
