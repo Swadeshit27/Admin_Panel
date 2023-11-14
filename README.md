@@ -72,6 +72,13 @@ Method : ``POST``
 
 ```bash
     {
+        "message": "all fields are required",
+        "success": false
+    }
+```
+
+```bash
+    {
         "message": "Email already exists",
         "success": false
     }
@@ -136,6 +143,13 @@ Method : ``POST``
 
 ```bash
     {
+        "message": "all fields are required",
+        "success": false
+    }
+```
+
+```bash
+    {
         "message": "Admin doesn't exists",
         "success": false
     }
@@ -197,6 +211,12 @@ Method : ``POST``
 ```bash
     {
         "message": "unauthorized admin",
+        "success": false
+    }
+```
+```bash
+    {
+        "message": "all fields are required",
         "success": false
     }
 ```

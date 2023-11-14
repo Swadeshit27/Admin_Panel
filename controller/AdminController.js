@@ -6,6 +6,7 @@ import CommonModel from "../model/AdminUserModel.js";
 export const adminRegister = async (req, res) => {
   try {
     const { Username, Email, Password } = req.body;
+    if(!(Username && Password && Email))return res.status(403).json({ message:"all fields are required", success:false });
     // check if admin is already exist or not
     const isAdminExist = await CommonModel.findOne({ Email });
     //  if the given email  is belongs to admin
@@ -50,6 +51,10 @@ export const adminRegister = async (req, res) => {
 export const adminLogin = async (req, res) => {
   try {
     const { Username, Password } = req.body;
+      if (!(Username && Password))
+        return res
+          .status(403)
+          .json({ message: "all fields are required", success: false });
     // check if admin is already exist or not
     const admin = await CommonModel.findOne({ Username });
     // if admin is not exist, or email belongs to user
@@ -80,6 +85,10 @@ export const adminLogin = async (req, res) => {
 export const addUsers = async (req, res) => {
   try {
     const { Username, Email, Password } = req.body;
+      if (!(Username && Password && Email))
+        return res
+          .status(403)
+          .json({ message: "all fields are required", success: false });
     // check if the user is already exist or not
     const isUserExist = await CommonModel.findOne({ Email });
     // if the given email is belongs to the admin
@@ -123,7 +132,7 @@ export const addUsers = async (req, res) => {
   }
 };
 
-// display users
+// display users 
 export const displayAllUsers = async (req, res) => {
   try {
     // find all users presenting in the database
